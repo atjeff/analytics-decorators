@@ -1,0 +1,26 @@
+{
+    "name": "analytics-decorators",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/atjeff/analytics-decorators.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/atjeff/analytics-decorators/issues"
+    },
+    "homepage": "https://github.com/atjeff/analytics-decorators",
+    "devDependencies": {
+        "@types/google.analytics": "0.0.40"
+    },
+    "dependencies": {
+        "reflect-metadata": "^0.1.13"
+    }
+}
