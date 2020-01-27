@@ -1,5 +1,5 @@
 import 'reflect-metadata';
 
 export * from './analytics.core';
-export * from './decorators/analytics.method-decorators';
-export * from './decorators/analytics.param-decorators';
+export * from './decorators/decorators.module';
+export * from './util/util.module';

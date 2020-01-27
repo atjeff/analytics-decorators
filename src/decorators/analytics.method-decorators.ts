@@ -1,10 +1,10 @@
 import { sendEvent, sendException, sendHit, sendPageView, sendTimingEvent } from '../analytics.core';
-import { AnalyticsEvent } from '../types/analytics-event.model';
-import { AnalyticsException } from '../types/analytics-exception.model';
-import { DecoratorOutput } from '../types/decorator-output.model';
-import { GenericHitEvent } from '../types/generic-hit-event.model';
-import { PageView } from '../types/page-view.model';
-import { TimingEvent } from '../types/timing-event.model';
+import { AnalyticsEvent } from '../models/analytics-event.model';
+import { AnalyticsException } from '../models/analytics-exception.model';
+import { GenericHitEvent } from '../models/generic-hit-event.model';
+import { PageView } from '../models/page-view.model';
+import { TimingEvent } from '../models/timing-event.model';
+import { DecoratorOutput } from './models/decorator-output.model';
 
 /**
  * Fire's a Google Analytics event on function execution

@@ -1,7 +1,4 @@
-import React from 'react';
 import { get, getMany } from '../analytics.core';
-import { GoogleAnalyticsHitTypes } from '../types/ga-hit-types.enum';
-import { TrackAnalyticsEvent, TrackAnalyticsHit, TrackAnalyticsPageView, TrackAnalyticsTimingEvent } from './analytics.method-decorators';
 
 /**
  * Sets specified field values into an object from GA tracker.
@@ -27,56 +24,4 @@ export function Field(fieldNames?: string | string[]): ParameterDecorator {
 
         return descriptor;
     };
-}
-
-interface Props {
-    currentPage: string;
-    currentPageTitle: string;
-}
-
-interface State {
-    formError: boolean;
-}
-
-class ReactComponent extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {
-            formError: false
-        };
-    }
-
-    @TrackAnalyticsEvent({
-        eventCategory: 'Videos',
-        eventAction: 'play',
-        eventLabel: 'Fall Campaign'
-    })
-    onButtonClick() {}
-
-    @TrackAnalyticsPageView<ReactComponent>(({ props }) => ({
-        path: props.currentPage,
-        title: props.currentPageTitle
-    }))
-    routeToPage() {}
-
-    @TrackAnalyticsHit<ReactComponent>(({ state }) => {
-        const hitType = state.formError ? GoogleAnalyticsHitTypes.exception : GoogleAnalyticsHitTypes.event;
-
-        return {
-            hitType,
-            fieldsObject: {
-                exDescription: 'Some guy triggered a form error!',
-                exFatal: false
-            }
-        };
-    })
-    differentPossibilitiesFunction() {}
-
-    @TrackAnalyticsTimingEvent<ReactComponent>({
-        timingCategory: 'category',
-        timingVar: 'lookup',
-        timingValue: 123
-    })
-    onProcessingFinished() {}
 }
