@@ -17,10 +17,11 @@
         "url": "https://github.com/atjeff/analytics-decorators/issues"
     },
     "homepage": "https://github.com/atjeff/analytics-decorators",
+    "dependencies": {},
     "devDependencies": {
-        "@types/google.analytics": "0.0.40"
-    },
-    "dependencies": {
+        "@types/google.analytics": "0.0.40",
+        "@types/react": "^16.9.19",
+        "react": "^16.12.0",
         "reflect-metadata": "^0.1.13"
     }
 }

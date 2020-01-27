@@ -5,5 +5,3 @@ export interface AnalyticsEvent {
     eventValue?: number;
     nonInteraction?: boolean;
 }
-
-export type AnalyticsEventFactory<T> = AnalyticsEvent | ((input: T) => AnalyticsEvent);
