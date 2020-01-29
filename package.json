@@ -4,7 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "tsc --watch",
+        "build": "tsc",
+        "lint": "prettier --list-different 'src/**/*.ts'",
+        "format": "prettier --write 'src/**/*.ts'",
+        "test": "jest --runInBand"
     },
     "repository": {
         "type": "git",
@@ -17,11 +21,20 @@
         "url": "https://github.com/atjeff/analytics-decorators/issues"
     },
     "homepage": "https://github.com/atjeff/analytics-decorators",
-    "dependencies": {},
+    "dependencies": {
+        "jsdom": "^16.0.1",
+        "reflect-metadata": "^0.1.13"
+    },
     "devDependencies": {
         "@types/google.analytics": "0.0.40",
+        "@types/jest": "^25.1.0",
+        "@types/jsdom": "^12.2.4",
         "@types/react": "^16.9.19",
+        "jest": "^25.1.0",
+        "jsdom-global": "^3.0.2",
         "react": "^16.12.0",
-        "reflect-metadata": "^0.1.13"
+        "ts-jest": "^25.0.0",
+        "ts-node": "^8.6.2",
+        "typescript": "^3.7.5"
     }
 }

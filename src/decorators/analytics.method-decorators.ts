@@ -79,11 +79,6 @@ function createMethodDecorator<T = any, K = any>(
     valueOrFactory: DecoratorOutput<T, K>,
     outputFunction: (result: T) => any
 ): MethodDecorator {
-    /**
-     * @param {Function} target The method being decorated
-     * @param {string} key The method name
-     * @param {PropertyDescriptor} descriptor a property descriptor of the given property if it exists on the object, undefined otherwise. The property descriptor is obtained by invoking the Object.getOwnPropertyDescriptor() function.
-     */
     return (target: Function, key: string, descriptor: PropertyDescriptor) => {
         const original = descriptor.value;
 

@@ -12,7 +12,7 @@ import { loadGoogleAnalyticsScript } from './util/load-ga.util';
  *
  * @type {UniversalAnalytics.Tracker}
  */
-let defaultTracker: UniversalAnalytics.Tracker;
+export let defaultTracker: UniversalAnalytics.Tracker;
 
 /**
  * Sends tracking event to GA

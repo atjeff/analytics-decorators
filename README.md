@@ -56,3 +56,14 @@ class ReactComponent extends React.Component<Props, State> {
     onProcessingFinished() {}
 }
 ```
+
+```ts
+class TestClass {
+    @UseTrackerFields()
+    testMethod(param1: string, @Field('test') param2: string) {
+        console.log(param1, param2);
+    }
+}
+
+new TestClass().testMethod('1', '2');
+```
