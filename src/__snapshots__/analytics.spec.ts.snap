@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analytics Core createAnalyticsTracker should call ga.create with the passed in values 1`] = `"TRACKER-ID-12345"`;
+
+exports[`Analytics Core sendEvent should call send with the passed in event 1`] = `
+Array [
+  "event",
+  Object {
+    "eventAction": "play",
+    "eventCategory": "Videos",
+    "eventLabel": "Fall Campaign",
+  },
+]
+`;
+
+exports[`Analytics Core sendException should call send with the passed in exception 1`] = `
+Array [
+  "exception",
+  Object {
+    "exDescription": "Someone broke the app",
+    "exFatal": true,
+  },
+]
+`;
+
+exports[`Analytics Core sendHit should call send with the passed in generic hit type and payload 1`] = `
+Array [
+  "exception",
+  Object {
+    "exDescription": "Someone broke the app",
+    "exFatal": true,
+  },
+]
+`;
+
+exports[`Analytics Core sendPageView should call send with the path 1`] = `
+Array [
+  "pageview",
+  Object {
+    "page": "some-path",
+  },
+]
+`;
+
+exports[`Analytics Core sendPageView should call send with the path and title when it exists 1`] = `
+Array [
+  "pageview",
+  Object {
+    "page": "some-path",
+    "title": "Some Path Page!",
+  },
+]
+`;
+
+exports[`Analytics Core sendTimingEvent should call send with the category, var, value 1`] = `
+Array [
+  "timing",
+  Object {
+    "timingCategory": "Form",
+    "timingValue": "1234",
+    "timingVar": "completionTime",
+  },
+]
+`;
+
+exports[`Analytics Core sendTimingEvent should call send with the category, var, value and label when it exists 1`] = `
+Array [
+  "timing",
+  Object {
+    "timingCategory": "Form",
+    "timingLabel": "Login Form",
+    "timingValue": "1234",
+    "timingVar": "completionTime",
+  },
+]
+`;

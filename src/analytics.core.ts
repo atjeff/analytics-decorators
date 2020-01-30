@@ -166,7 +166,7 @@ export function createAnalyticsTracker(
     options?: any
 ): UniversalAnalytics.Tracker {
     if (windowHasGoogleAnalytics(window)) {
-        return window.ga.create(trackerId, 'auto');
+        return window.ga.create(trackerId, cookieDomain);
     }
 }
 
@@ -176,6 +176,6 @@ export function createAnalyticsTracker(
  * @param {*} window
  * @returns {window is GoogleAnalyticsWindow}
  */
-function windowHasGoogleAnalytics(window: any): window is GoogleAnalyticsWindow {
-    return !!window.ga && typeof window.ga === 'function';
+export function windowHasGoogleAnalytics(window: any): window is GoogleAnalyticsWindow {
+    return !!window.ga;
 }
