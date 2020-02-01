@@ -141,9 +141,9 @@ export function setMany(fieldsObject: UniversalAnalytics.FieldsObject): void {
  * @export
  * @param {string} trackerId
  */
-export function initialize(trackerId: string): void {
+export async function initialize(trackerId: string): Promise<void> {
     if (!windowHasGoogleAnalytics(window)) {
-        loadGoogleAnalyticsScript();
+        await loadGoogleAnalyticsScript();
     }
 
     defaultTracker = createAnalyticsTracker(trackerId);
@@ -177,5 +177,5 @@ export function createAnalyticsTracker(
  * @returns {window is GoogleAnalyticsWindow}
  */
 export function windowHasGoogleAnalytics(window: any): window is GoogleAnalyticsWindow {
-    return !!window.ga;
+    return !!window.ga && typeof window.ga === 'function';
 }

@@ -74,3 +74,22 @@ Array [
   },
 ]
 `;
+
+exports[`Analytics Core setMany should call set with a fieldsObject 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "allowAnchor": true,
+        "appId": "test1234",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

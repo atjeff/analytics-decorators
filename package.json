@@ -22,7 +22,6 @@
     },
     "homepage": "https://github.com/atjeff/analytics-decorators",
     "dependencies": {
-        "jsdom": "^16.0.1",
         "reflect-metadata": "^0.1.13"
     },
     "devDependencies": {
@@ -31,6 +30,7 @@
         "@types/jsdom": "^12.2.4",
         "@types/react": "^16.9.19",
         "jest": "^25.1.0",
+        "jsdom": "^16.0.1",
         "jsdom-global": "^3.0.2",
         "react": "^16.12.0",
         "ts-jest": "^25.0.0",

@@ -8,6 +8,8 @@ import {
     sendHit,
     sendPageView,
     sendTimingEvent,
+    set,
+    setMany,
     windowHasGoogleAnalytics
 } from './analytics.core';
 import { GoogleAnalyticsHitTypes } from './models/ga-hit-types.enum';
@@ -256,6 +258,39 @@ describe('Analytics Core', () => {
             getMany(['test-field', 'test-field2']);
 
             expect(getSpy).toHaveBeenCalledTimes(2);
+        });
+    });
+
+    describe('set', () => {
+        it('should call set with the field name and value', () => {
+            const setSpy = jest.fn();
+            jest.spyOn(window.ga as any, 'create').mockReturnValue({
+                set: setSpy
+            });
+
+            initialize(trackerId);
+
+            set('name', 'value');
+
+            expect(setSpy).toHaveBeenCalled();
+        });
+    });
+
+    describe('setMany', () => {
+        it('should call set with a fieldsObject', () => {
+            const setSpy = jest.fn();
+            jest.spyOn(window.ga as any, 'create').mockReturnValue({
+                set: setSpy
+            });
+
+            initialize(trackerId);
+
+            setMany({
+                allowAnchor: true,
+                appId: 'test1234'
+            });
+
+            expect(setSpy).toMatchSnapshot();
         });
     });
 });
