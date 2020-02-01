@@ -23,34 +23,34 @@ const trackerId = 'TRACKER-ID-12345';
 
 describe('Analytics Core', () => {
     describe('initialize', () => {
-        it(`should call loadGoogleAnalyticsScript if ga isn't loaded`, () => {
+        it(`should call loadGoogleAnalyticsScript if ga isn't loaded`, async () => {
             const mockLoadGoogleAnalyticsScript = jest.spyOn(loadGAUtil, 'loadGoogleAnalyticsScript').mockImplementation();
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             expect(mockLoadGoogleAnalyticsScript).toHaveBeenCalled();
 
             mockLoadGoogleAnalyticsScript.mockRestore();
         });
 
-        it(`shouldn't call loadGoogleAnalyticsScript if ga is loaded`, () => {
+        it(`shouldn't call loadGoogleAnalyticsScript if ga is loaded`, async () => {
             const mockLoadGoogleAnalyticsScript = jest.spyOn(loadGAUtil, 'loadGoogleAnalyticsScript');
             const gaCreateSpy = jest.fn();
             loadGAUtil.loadGoogleAnalyticsScript();
             mockLoadGoogleAnalyticsScript.mockReset();
             (global as any).window.ga.create = gaCreateSpy;
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             expect(mockLoadGoogleAnalyticsScript).not.toHaveBeenCalled();
         });
 
-        it('should call ga.create', () => {
+        it('should call ga.create', async () => {
             const gaCreateSpy = jest.fn();
             loadGAUtil.loadGoogleAnalyticsScript();
             (global as any).window.ga.create = gaCreateSpy;
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             expect(gaCreateSpy).toHaveBeenCalled();
         });
@@ -89,13 +89,28 @@ describe('Analytics Core', () => {
     });
 
     describe('sendEvent', () => {
-        it('should call send with the passed in event', () => {
+        beforeEach(() => {
+            jest.restoreAllMocks();
+        });
+        it('should call send with the passed in event', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
+
+            sendEvent({
+                eventCategory: 'Videos',
+                eventAction: 'play',
+                eventLabel: 'Fall Campaign'
+            });
+
+            expect(sendSpy.mock.calls[0]).toMatchSnapshot();
+        });
+
+        it('should not throw a type error', async () => {
+            const sendSpy = jest.fn();
 
             sendEvent({
                 eventCategory: 'Videos',
@@ -108,13 +123,13 @@ describe('Analytics Core', () => {
     });
 
     describe('sendPageView', () => {
-        it('should call send with the path', () => {
+        it('should call send with the path', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendPageView({
                 path: 'some-path'
@@ -123,13 +138,13 @@ describe('Analytics Core', () => {
             expect(sendSpy.mock.calls[0]).toMatchSnapshot();
         });
 
-        it('should call send with the path and title when it exists', () => {
+        it('should call send with the path and title when it exists', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendPageView({
                 path: 'some-path',
@@ -141,13 +156,13 @@ describe('Analytics Core', () => {
     });
 
     describe('sendException', () => {
-        it('should call send with the passed in exception', () => {
+        it('should call send with the passed in exception', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendException({
                 exDescription: 'Someone broke the app',
@@ -159,13 +174,13 @@ describe('Analytics Core', () => {
     });
 
     describe('sendHit', () => {
-        it('should call send with the passed in generic hit type and payload', () => {
+        it('should call send with the passed in generic hit type and payload', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendHit({
                 hitType: GoogleAnalyticsHitTypes.exception,
@@ -180,13 +195,13 @@ describe('Analytics Core', () => {
     });
 
     describe('sendTimingEvent', () => {
-        it('should call send with the category, var, value', () => {
+        it('should call send with the category, var, value', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendTimingEvent({
                 timingCategory: 'Form',
@@ -197,13 +212,13 @@ describe('Analytics Core', () => {
             expect(sendSpy.mock.calls[0]).toMatchSnapshot();
         });
 
-        it('should call send with the category, var, value and label when it exists', () => {
+        it('should call send with the category, var, value and label when it exists', async () => {
             const sendSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 send: sendSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             sendTimingEvent({
                 timingCategory: 'Form',
@@ -217,13 +232,13 @@ describe('Analytics Core', () => {
     });
 
     describe('get', () => {
-        it('should call get with the passed in fieldName', () => {
+        it('should call get with the passed in fieldName', async () => {
             const getSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 get: getSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             const output = get('test-field');
 
@@ -231,14 +246,14 @@ describe('Analytics Core', () => {
             expect(output).toBeUndefined();
         });
 
-        it('should return the fieldValue if it exists', () => {
+        it('should return the fieldValue if it exists', async () => {
             const expectedOutput = { test: 2 };
             const getSpy = jest.fn().mockReturnValue(expectedOutput);
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 get: getSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             const output = get('test-field');
 
@@ -247,28 +262,40 @@ describe('Analytics Core', () => {
     });
 
     describe('getMany', () => {
-        it('should call get once for each field name', () => {
+        it('should call get once for each field name', async () => {
             const getSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 get: getSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             getMany(['test-field', 'test-field2']);
 
             expect(getSpy).toHaveBeenCalledTimes(2);
         });
+
+        it('should return the values if they exist', async () => {
+            jest.spyOn(window.ga as any, 'create').mockReturnValue({
+                get: jest.fn(value => ({ value }))
+            });
+
+            await initialize(trackerId);
+
+            const result = getMany(['test-field', 'test-field2']);
+
+            expect(result).toMatchSnapshot();
+        });
     });
 
     describe('set', () => {
-        it('should call set with the field name and value', () => {
+        it('should call set with the field name and value', async () => {
             const setSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 set: setSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             set('name', 'value');
 
@@ -277,13 +304,13 @@ describe('Analytics Core', () => {
     });
 
     describe('setMany', () => {
-        it('should call set with a fieldsObject', () => {
+        it('should call set with a fieldsObject', async () => {
             const setSpy = jest.fn();
             jest.spyOn(window.ga as any, 'create').mockReturnValue({
                 set: setSpy
             });
 
-            initialize(trackerId);
+            await initialize(trackerId);
 
             setMany({
                 allowAnchor: true,

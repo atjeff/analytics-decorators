@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analytics Method Decorators TrackAnalyticsEvent should call sendEvent with the passed in event 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "eventAction": "play",
+        "eventCategory": "Videos",
+        "eventLabel": "Fall Campaign",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsEvent should call the passed in function and call sendEvent with the result 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "eventAction": "play from a function",
+        "eventCategory": "Videos from a function",
+        "eventLabel": "Fall Campaign from a function",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsException should call sendException with the passed in event 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "exDescription": "Some guy triggered a form error!",
+        "exFatal": false,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsException should call the passed in function and call sendException with the result 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "exDescription": "Some guy triggered a form error! From a function",
+        "exFatal": false,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsHit should call sendHit with the passed in event 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "fieldsObject": Object {
+          "exDescription": "Some guy triggered a form error!",
+          "exFatal": false,
+        },
+        "hitType": "exception",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsHit should call the passed in function and call sendHit with the result 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "fieldsObject": Object {
+          "exDescription": "Some guy triggered a form error! From a function",
+          "exFatal": false,
+        },
+        "hitType": "exception",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsPageView should call sendPageView with the passed in event 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "path": "somePage/deeperPage",
+        "title": "Page title",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsPageView should call the passed in function and call sendPageView with the result 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "path": "somePage/deeperPage from a function",
+        "title": "Page title from a function",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsTimingEvent should call sendTimingEvent with the passed in event 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "timingCategory": "category",
+        "timingValue": 123,
+        "timingVar": "lookup",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Analytics Method Decorators TrackAnalyticsTimingEvent should call the passed in function and call sendTimingEvent with the result 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "timingCategory": "category from a function",
+        "timingValue": 123,
+        "timingVar": "lookup from a function",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

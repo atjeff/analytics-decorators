@@ -11,7 +11,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "files.exclude": {
-        "**/__snapshots__/**": true,
+        "**/__snapshots__/**": false,
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.hg": true,

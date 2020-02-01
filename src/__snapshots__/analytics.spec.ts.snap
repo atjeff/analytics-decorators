@@ -2,6 +2,17 @@
 
 exports[`Analytics Core createAnalyticsTracker should call ga.create with the passed in values 1`] = `"TRACKER-ID-12345"`;
 
+exports[`Analytics Core getMany should return the values if they exist 1`] = `
+Object {
+  "test-field": Object {
+    "value": "test-field",
+  },
+  "test-field2": Object {
+    "value": "test-field2",
+  },
+}
+`;
+
 exports[`Analytics Core sendEvent should call send with the passed in event 1`] = `
 Array [
   "event",
@@ -12,6 +23,8 @@ Array [
   },
 ]
 `;
+
+exports[`Analytics Core sendEvent should not throw a type error 1`] = `undefined`;
 
 exports[`Analytics Core sendException should call send with the passed in exception 1`] = `
 Array [
