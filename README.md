@@ -1,5 +1,10 @@
 # analytics-decorators
 
+[![npm version](https://img.shields.io/npm/v/analytics-decorators.svg?style=flat-square)](https://www.npmjs.com/package/analytics-decorators)
+[![npm downloads](https://img.shields.io/npm/dm/analytics-decorators.svg?style=flat-square)](https://www.npmjs.com/package/analytics-decorators)
+![npm bundle size](https://img.shields.io/bundlephobia/min/analytics-decorators)
+![Codecov branch](https://img.shields.io/codecov/c/github/atjeff/analytics-decorators/master)
+
 A Typescript library that provides methods and decorators to interact with Google's Universal Analytics [(Analytics.js)](https://developers.google.com/analytics/devguides/collection/analyticsjs). 
 
 ### Installation
