@@ -11,6 +11,19 @@ import {
 } from './analytics.method-decorators';
 
 describe('Analytics Method Decorators', () => {
+    describe('createMethodDecorator', () => {
+        it(`should not call the output function if a value isn't returned`, () => {
+            class TestTrackAnalyticsEvent {
+                @TrackAnalyticsEvent(undefined)
+                testMethod() {}
+            }
+
+            new TestTrackAnalyticsEvent().testMethod();
+
+            expect(sendEvent).not.toHaveBeenCalled();
+        });
+    });
+
     describe('TrackAnalyticsEvent', () => {
         beforeEach(() => (sendEvent as jest.MockedFunction<typeof sendEvent>).mockClear());
         it('should call sendEvent with the passed in event', () => {

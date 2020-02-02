@@ -22,7 +22,7 @@ export function UseTrackerFields(): MethodDecorator {
         descriptor.value = function(...args: any[]) {
             const metadataKey = createTrackerMetadataKey(propertyName);
 
-            const requiredParameters: FieldDecoratorsMetadata[] = Reflect.getOwnMetadata(metadataKey, target, propertyName);
+            const requiredParameters: FieldDecoratorsMetadata[] = Reflect.getOwnMetadata(metadataKey, target, propertyName) || [];
 
             const modifiedArgs = requiredParameters.reduce((accumulator, { parameterIndex, fieldNames }) => {
                 const trackerValue = Array.isArray(fieldNames) ? getMany(fieldNames) : get(fieldNames);

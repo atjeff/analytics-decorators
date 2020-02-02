@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tracker Field Decorators UseTrackerFields should not modify any arguments if they don't have metadata 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "test1",
+      "test2",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Tracker Field Decorators UseTrackerFields should replace a specified key param with its value 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "test1",
+      "app-id-1234",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Tracker Field Decorators UseTrackerFields should replace an array of keys param with their values 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "test1",
+      Object {
+        "appId": "app-id-1234",
+        "appVersion": "4.2.0",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Tracker Field Decorators UseTrackerFields shouldn't replace anything if get doesn't return values 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "test1",
+      "test2",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
