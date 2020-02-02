@@ -10,10 +10,10 @@ A Typescript library that provides methods and decorators to interact with Googl
 ### Installation
 
 ```bash
-# Using `yarn`
+# Using yarn
 yarn add analytics-decorators
 
-# Using `npm`
+# Using npm
 npm install --save analytics-decorators
 ```
 
@@ -25,7 +25,7 @@ import { initialize } from 'analytics-decorators';
 initialize('UA-000000000-0').then(() => console.log(`Let's track some stuff`));
 ```
 
-You can also choose to load GA manually with the tracking script provided [here](https://developers.google.com/analytics/devguides/collection/analyticsjs). Which removes the need to wait for initialize to resolve.
+You can also choose to load GA manually with the tracking script provided [here](https://developers.google.com/analytics/devguides/collection/analyticsjs). This removes the need to wait for initialize to resolve.
 
 
 ### Example usage with React
