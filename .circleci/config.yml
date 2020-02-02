@@ -8,8 +8,8 @@ orbs:
 jobs:
     build:
         branches:
-            only:
-                - master
+          only:
+            - master
         docker:
             - image: circleci/node:12.4
         working_directory: ~/analytics-decorators
